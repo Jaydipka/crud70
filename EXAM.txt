@@ -1,0 +1,172 @@
+1-------------------------------
+@persistencecontext(unitName="war-pu")
+EntityManager em;
+
+
+2-----------A--------------------
+public void addAdmin(string name, string email, string password){
+
+Admin admin = new Admin();
+admin.setAdminName(name);
+admin.setAdminEmail(email);
+admin.setAdminPassword(password);
+em.persist(admin);
+
+Admin admin = new Admin();
+admin.setAdminName(name);
+admin.setAdminEmail(email);
+admin.setAdminPassword(password);
+em.persist(admin);
+
+}
+
+
+3--------------UPDATE--------------------
+public void updateAdmin(Integer adminid, string name, string email, string password){
+Admin admin = em.find(Admin.class, adminId);
+admin.setAdminName(name);
+admin.setAdminEmail(email);
+admin.setAdminPassword(password);
+em.marge(admin);
+
+
+Admin admin = em.find(Admin.class, adminId);
+admin.setAdminName(name);
+admin.setAdminEmail(email);
+admin.setAdminPassword(password);
+em.marge(admin);
+}
+
+
+4----------DELETE--------------------
+public void removeAdmin(Integer adminId){
+Admin admin = em.find(Admin.class, adminId);
+em.remove(admin);
+}
+
+
+5-----------override----------------------
+
+return em.createNamedQuery("Admin.findAll").getResultList();
+
+return em.createNamedQuery("Admin.findAll").getResultList();
+
+
+
+6----------------
+
+Collection<Admin> admin = em.createNamedQuery("Admin.findByName")
+		.setParameter=("Name", name)
+		.getResultList();
+return admin;
+
+
+7---------------
+
+return em.find(Admin.class, adminId);
+
+
+8--------adminlocalbean-----------
+
+Collection<Admin>getAllAdmin();
+Collection<Admin>getAdminByName(String name);
+Collection<Admin>getAdminByEmail(String email);
+Collection<Admin>getAdminByPassword(String password);
+Admin findAdminById(Integer adminId);
+
+Admin findAdminById(Integer adminId);
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    <h:body>
+        <h:form>
+           <h:outputLabel for="textname">
+                <h:outputText value="Enter name"/> comment 
+            </h:outputLabel>
+            <h:inputText id="textName" value=""/> comment 
+            <br/>
+            
+            <h:outputLabel for="textEmail">
+                <h:outputText value="Enter Email"/> comment 
+            </h:outputLabel>
+            <h:inputText id="textEmail" value=""/> comment 
+            <br/>
+            
+            <h:outputLabel for="textpassword">
+                <h:outputText value="Enter password"/> comment 
+            </h:outputLabel>
+            <h:inputText id="password" value=""/> comment 
+            <br/>
+            
+            <h:commandButton id="cmdInsert" value="adduser" action=""/>
+            <div class="form">
+            <div class="login-form">
+
+                <!-- cancle button -->
+                <a href="#" class="form-cancle">
+                    <i class="fas fa-times"></i>
+                </a>
+
+
+                <strong>Log In</strong>
+                <form>
+                    <input type="email" placeholder="Example@gmail.com" name="email" required="true"/><!-- email -->
+                    <input type="password" placeholder="Password" name="password" required="true"/>
+                    
+                    <!-- submit -->
+                    <input type="submit" value="Log In"/>
+                </form>
+                
+                <!--forget and sign-up button-->
+                <div class="form-btns">
+                    <a href="#" class="forget">Forget Your Password?</a>
+                    <a href="#" class="sign-up-btn">Create Account</a>
+                </div>
+            </div>
+                
+            <!--  signup form    -->
+            <div class="sign-up-form">
+
+                <!-- cancle button -->
+                <a href="#" class="form-cancle">
+                    <i class="fas fa-times"></i>
+                </a>
+
+                <strong>Sign Up</strong>
+                <form>
+                    <input type="text" placeholder="Full Name" name="fullname" required="true"/>
+                    <input type="email" placeholder="Example@gmail.com" name="email" required="true"/><!-- email -->
+                    <input type="password" placeholder="Password" name="password" required="true"/><!-- comment -->
+                    
+                    <!-- submit -->
+                    <input type="submit" value="Sign Up"/>
+                </form>
+                
+                <!--forget and sign-up button-->
+                <div class="form-btns">
+                    <a href="#" class="already-account">Already Have Account?</a>
+                </div>
+            </div>            
+            </div>
+
+<script>
+     $(document).on('click','.user,.already-account',function(){
+            $('.form').addClass('login-active').removeClass('sign-up-active')
+        });
+        
+        $(document).on('click','.sign-up-btn',function(){
+            $('.form').addClass('sign-up-active').removeClass('login-active')
+        });
+        
+        $(document).on('click','.form-cancle',function(){
+            $('.form').removeClass('login-active').removeClass('sign-up-active')
+        });
+        
+    
+</script>
+
+
+
+
